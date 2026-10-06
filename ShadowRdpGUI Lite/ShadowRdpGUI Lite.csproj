@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E613E761-F1DA-4409-A5A6-7A681A43AAE6}</ProjectGuid>
+    <ProjectGuid>{0CFF5417-D6C3-43A1-804A-45C1300D7BAB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ShadowRdpGUI</RootNamespace>
-    <AssemblyName>ShadowRdpGUI</AssemblyName>
+    <RootNamespace>ShadowRdpGUI_Lite</RootNamespace>
+    <AssemblyName>ShadowRdpGUI Lite</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,12 +32,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>srdp.ico</ApplicationIcon>
+    <ApplicationIcon>srdpl.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -53,29 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppSettings.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="RdpTabPage.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SessionManager.cs" />
-    <Compile Include="SettingsForm.cs">
+    <Compile Include="SessionInfo.cs" />
+    <Compile Include="ShadowRdpGUILiteMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShadowRdpGUIMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShadowRdpGUIMainForm.Designer.cs">
-      <DependentUpon>ShadowRdpGUIMainForm.cs</DependentUpon>
+    <Compile Include="ShadowRdpGUILiteMainForm.Designer.cs">
+      <DependentUpon>ShadowRdpGUILiteMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="SettingsForm.resx">
-      <DependentUpon>SettingsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShadowRdpGUIMainForm.resx">
-      <DependentUpon>ShadowRdpGUIMainForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="WtsManager.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -85,6 +71,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShadowRdpGUILiteMainForm.resx">
+      <DependentUpon>ShadowRdpGUILiteMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,7 +89,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="srdp.ico" />
+    <Content Include="srdpl.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

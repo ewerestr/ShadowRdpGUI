@@ -166,5 +166,19 @@ namespace ShadowRdpGUI
             Logger.LogEnabled = Settings.EnableLog;
             Logger.DumpEnabled = Settings.EnableWindowDump;
         }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
+            this.SuspendLayout();
+            // 
+            // SettingsForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "SettingsForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

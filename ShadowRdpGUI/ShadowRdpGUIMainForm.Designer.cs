@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShadowRdpGUIMainForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.chkAutoRefresh = new System.Windows.Forms.CheckBox();
             this.btnSettings = new System.Windows.Forms.Button();
             this.listBoxSessions = new System.Windows.Forms.ListBox();
             this.tabSessions = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chkAutoRefresh = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,6 +87,20 @@
             this.splitContainer2.SplitterDistance = 32;
             this.splitContainer2.TabIndex = 0;
             // 
+            // chkAutoRefresh
+            // 
+            this.chkAutoRefresh.Appearance = System.Windows.Forms.Appearance.Button;
+            this.chkAutoRefresh.AutoSize = true;
+            this.chkAutoRefresh.Checked = true;
+            this.chkAutoRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAutoRefresh.Location = new System.Drawing.Point(4, 4);
+            this.chkAutoRefresh.Name = "chkAutoRefresh";
+            this.chkAutoRefresh.Size = new System.Drawing.Size(76, 23);
+            this.chkAutoRefresh.TabIndex = 2;
+            this.chkAutoRefresh.Text = "Автоапдейт";
+            this.chkAutoRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.chkAutoRefresh.UseVisualStyleBackColor = true;
+            // 
             // btnSettings
             // 
             this.btnSettings.Location = new System.Drawing.Point(86, 4);
@@ -131,26 +146,13 @@
             this.tabPage2.Size = new System.Drawing.Size(200, 100);
             this.tabPage2.TabIndex = 0;
             // 
-            // chkAutoRefresh
-            // 
-            this.chkAutoRefresh.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkAutoRefresh.AutoSize = true;
-            this.chkAutoRefresh.Checked = true;
-            this.chkAutoRefresh.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAutoRefresh.Location = new System.Drawing.Point(4, 4);
-            this.chkAutoRefresh.Name = "chkAutoRefresh";
-            this.chkAutoRefresh.Size = new System.Drawing.Size(76, 23);
-            this.chkAutoRefresh.TabIndex = 2;
-            this.chkAutoRefresh.Text = "Автоапдейт";
-            this.chkAutoRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.chkAutoRefresh.UseVisualStyleBackColor = true;
-            // 
             // ShadowRdpGUIMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(991, 572);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShadowRdpGUIMainForm";
             this.Text = "Form1";
             this.splitContainer1.Panel1.ResumeLayout(false);
