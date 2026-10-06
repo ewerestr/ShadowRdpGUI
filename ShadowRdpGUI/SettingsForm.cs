@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -14,6 +15,9 @@ namespace ShadowRdpGUI
         private readonly CheckBox chkDump;
         private readonly CheckBox chkDark;
 
+        private const string AppVersion = "1.1";
+        private const string GithubUrl = "https://github.com/ewerestr/ShadowRdpGUI";
+
         public SettingsForm(AppSettings current)
         {
             Settings = current;
@@ -23,7 +27,7 @@ namespace ShadowRdpGUI
             StartPosition = FormStartPosition.CenterParent;
             MinimizeBox = false;
             MaximizeBox = false;
-            ClientSize = new Size(420, 270);
+            ClientSize = new Size(420, 350);
 
             chkDebug = new CheckBox
             {
@@ -62,15 +66,52 @@ namespace ShadowRdpGUI
                 Text = "Файлы сохраняются в:\r\n" + Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                     "ShadowRdpGUI"),
-                Location = new Point(15, 140),
+                Location = new Point(15, 145),
                 AutoSize = true,
                 ForeColor = Color.Gray
+            };
+
+            var lblVersion = new Label
+            {
+                Text = $"ShadowRdpGUI v{AppVersion}",
+                Location = new Point(15, 210),
+                AutoSize = true,
+                ForeColor = Color.Gray
+            };
+
+            var lnkGithub = new LinkLabel
+            {
+                Text = GithubUrl,
+                Location = new Point(15, 232),
+                AutoSize = true,
+                LinkColor = Color.FromArgb(0, 102, 204),
+                ActiveLinkColor = Color.FromArgb(0, 153, 255),
+                VisitedLinkColor = Color.FromArgb(102, 0, 204)
+            };
+            lnkGithub.LinkClicked += (s, e) =>
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = GithubUrl,
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "Не удалось открыть ссылку:\r\n" + ex.Message,
+                        "Ошибка",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
             };
 
             var btnOpen = new Button
             {
                 Text = "Открыть папку",
-                Location = new Point(15, 215),
+                Location = new Point(15, 305),
                 Size = new Size(120, 28)
             };
             btnOpen.Click += (s, e) =>
@@ -81,7 +122,7 @@ namespace ShadowRdpGUI
                         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                         "ShadowRdpGUI");
                     Directory.CreateDirectory(dir);
-                    System.Diagnostics.Process.Start("explorer.exe", dir);
+                    Process.Start("explorer.exe", dir);
                 }
                 catch { }
             };
@@ -90,7 +131,7 @@ namespace ShadowRdpGUI
             {
                 Text = "OK",
                 DialogResult = DialogResult.OK,
-                Location = new Point(235, 215),
+                Location = new Point(235, 305),
                 Size = new Size(75, 28)
             };
             btnOk.Click += (s, e) => Apply();
@@ -99,11 +140,17 @@ namespace ShadowRdpGUI
             {
                 Text = "Отмена",
                 DialogResult = DialogResult.Cancel,
-                Location = new Point(320, 215),
+                Location = new Point(320, 305),
                 Size = new Size(85, 28)
             };
 
-            Controls.AddRange(new Control[] { chkDebug, chkLog, chkDump, chkDark, lblHint, btnOpen, btnOk, btnCancel });
+            Controls.AddRange(new Control[]
+            {
+            chkDebug, chkLog, chkDump, chkDark,
+            lblHint, lblVersion, lnkGithub,
+            btnOpen, btnOk, btnCancel
+            });
+
             AcceptButton = btnOk;
             CancelButton = btnCancel;
         }
